@@ -1,0 +1,88 @@
+{
+  "uuid": "4a3a76a33c96493a874309561e18b574",
+  "historyId": "REST_test.Features.SpecFlowFeature1Feature.AddTwoNumbers",
+  "fullName": "REST_test.Features.SpecFlowFeature1Feature.AddTwoNumbers",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "14"
+    },
+    {
+      "name": "host",
+      "value": "LAPTOP-7R0RTK7G"
+    },
+    {
+      "name": "feature",
+      "value": "SpecFlowFeature1"
+    },
+    {
+      "name": "tag",
+      "value": "mytag"
+    }
+  ],
+  "links": [],
+  "name": "Add two numbers",
+  "status": "passed",
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "Given  I have entered 50 into the calculator",
+      "status": "passed",
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "Parameter #1, String",
+          "value": "50"
+        }
+      ],
+      "start": 1580834677881,
+      "stop": 1580834677922
+    },
+    {
+      "name": "Given  I have also entered 70 into the calculator",
+      "status": "passed",
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "Parameter #1, String",
+          "value": "70"
+        }
+      ],
+      "start": 1580834677923,
+      "stop": 1580834677925
+    },
+    {
+      "name": "When  I press add",
+      "status": "passed",
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1580834677926,
+      "stop": 1580834677927
+    },
+    {
+      "name": "Then  the result should be 120 on the screen",
+      "status": "passed",
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "Parameter #1, String",
+          "value": "120"
+        }
+      ],
+      "start": 1580834677928,
+      "stop": 1580834677953
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1580834677815,
+  "stop": 1580834677968
+}
