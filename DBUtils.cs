@@ -12,11 +12,11 @@ namespace REST_test
         private static string Port { get; } = "3306";
         private static string Username { get; } = "root";
         private static string Password { get; } = "кщще";
-
+        private static string Charset { get; } = "cp866";
         public static MySqlConnection DBConnection()
         {
             var concat = "Server=" + Host + ";Database=" + Database + ";Port="
-                         + Port + ";User Id=" + Username + ";Password=" + Password;
+                         + Port + ";User Id=" + Username + ";Password=" + Password + ";Charset=" + Charset;
 
             var myConnection = new MySqlConnection(concat);
             return myConnection;

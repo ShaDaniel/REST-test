@@ -4,6 +4,7 @@ using TechTalk.SpecFlow;
 using System.Net.Http;
 using NUnit.Framework;
 using MySql.Data.MySqlClient;
+using Allure.Commons;
 
 namespace REST_test
 {
@@ -17,11 +18,11 @@ namespace REST_test
             List<string> legalStatuses = new List<string>() { "available", "pending", "sold" };
             var requestUtil = new GeneralHttpRequest();
 
-            var responseCode = requestUtil.Request("get", String.Format(requestUtil.PetStatusUri, status));
-            responseCode.Wait();
+            var response = requestUtil.Request("get", String.Format(requestUtil.PetStatusUri, status));
+            response.Wait();
             // Входит ли статус в список допустимых
             var expectedCode = legalStatuses.Contains(status) ? "OK" : "BadRequest";
-            Assert.AreEqual(expectedCode, responseCode.Result.ToString(), "Возвращен неверный код ответа");
+            Assert.AreEqual(expectedCode, response.Result.StatusCode.ToString(), "Возвращен неверный код ответа");
         }
     }
 }

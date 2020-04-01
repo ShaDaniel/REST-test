@@ -20,28 +20,28 @@ namespace REST_test.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("GetPetByStatus")]
+    [NUnit.Framework.DescriptionAttribute("Pet creation")]
     [NUnit.Framework.CategoryAttribute("all")]
-    [NUnit.Framework.CategoryAttribute("get_pet_by_status")]
-    public partial class GetPetByStatusFeature
+    [NUnit.Framework.CategoryAttribute("pet_creation")]
+    public partial class PetCreationFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = new string[] {
                 "all",
-                "get_pet_by_status"};
+                "pet_creation"};
         
-#line 1 "GetPetByStatus.feature"
+#line 1 "CreatePet.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "GetPetByStatus", null, ProgrammingLanguage.CSharp, new string[] {
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Pet creation", "Обязательные поля в модели: name, photoUrls", ProgrammingLanguage.CSharp, new string[] {
                         "all",
-                        "get_pet_by_status"});
+                        "pet_creation"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -80,18 +80,18 @@ namespace REST_test.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Positive test: all 3 correct statuses")]
-        [NUnit.Framework.CategoryAttribute("280320201827")]
+        [NUnit.Framework.DescriptionAttribute("Positive test: create pet")]
+        [NUnit.Framework.CategoryAttribute("010420202330")]
         [NUnit.Framework.CategoryAttribute("pos")]
-        public virtual void PositiveTestAll3CorrectStatuses()
+        public virtual void PositiveTestCreatePet()
         {
             string[] tagsOfScenario = new string[] {
-                    "280320201827",
+                    "010420202330",
                     "pos"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Positive test: all 3 correct statuses", null, new string[] {
-                        "280320201827",
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Positive test: create pet", null, new string[] {
+                        "010420202330",
                         "pos"});
-#line 5
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -111,32 +111,29 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 6
- testRunner.And("get pet by status \"available\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line hidden
 #line 7
- testRunner.And("get pet by status \"pending\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+  testRunner.And("create pet with name \"Cat\" and photourls \"test.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
 #line 8
- testRunner.And("get pet by status \"sold\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+  testRunner.And("create pet with name \"a\" and photourls \".\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Negative test: 3 wrong statuses")]
-        [NUnit.Framework.CategoryAttribute("280320201828")]
+        [NUnit.Framework.DescriptionAttribute("Negative test: create pet")]
+        [NUnit.Framework.CategoryAttribute("020420200018")]
         [NUnit.Framework.CategoryAttribute("neg")]
-        public virtual void NegativeTest3WrongStatuses()
+        public virtual void NegativeTestCreatePet()
         {
             string[] tagsOfScenario = new string[] {
-                    "280320201828",
+                    "020420200018",
                     "neg"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negative test: 3 wrong statuses", null, new string[] {
-                        "280320201828",
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negative test: create pet", null, new string[] {
+                        "020420200018",
                         "neg"});
-#line 11
+#line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -156,14 +153,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 11
+  testRunner.And("create pet with name \"\" and photourls \"test.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
 #line 12
- testRunner.And("get pet by status \"i\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+  testRunner.And("create pet with name \"a\" and photourls \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
 #line 13
- testRunner.And("get pet by status \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line hidden
-#line 14
- testRunner.And("get pet by status \"SolD\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+  testRunner.And("send empty json body", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
             }
             this.ScenarioCleanup();

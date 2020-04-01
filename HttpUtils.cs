@@ -11,27 +11,30 @@ namespace REST_test
 {
     class GeneralHttpRequest
     {
-        // URI получения животных по статусу
+        /// <summary> URI получения животных по статусу </summary>
         public string PetStatusUri { get; set; } = $"https://petstore.swagger.io/v2/pet/findByStatus?status={0}";
+        /// <summary> URI добавления животного </summary>
+        public string PetCreateUri { get; } = "https://petstore.swagger.io/v2/pet";
+        /// <summary>  Получение животного по ID </summary>
+        public string PetGetUri { get; set; } = $"https://petstore.swagger.io/v2/pet/{0}";
 
-        /// <summary>
-        /// Метод работы с веб-запросами в общем виде
-        /// </summary>
+
+        /// <summary> Метод работы с веб-запросами в общем виде </summary>
         /// <param name="method">Метод запроса</param>
         /// <param name="url">URI адрес запроса</param>
         /// <param name="json">Опциональный json для POST запроса</param>
-        /// <returns>Код ответа</returns>
-        public async Task<HttpStatusCode> Request(string method, string url, string json = "")
+        /// <returns> Сообщение с ответом </returns>
+        public async Task<HttpResponseMessage> Request(string method, string url, string json = "")
         {
             using var client = new HttpClient();
 
             var response = method switch
             {
                 ("get") => await client.GetAsync(url),
-                ("post") => await client.PostAsJsonAsync(url, json),
+                ("post") => await client.PostAsJsonAsync(url, new StringContent(json, Encoding.UTF8, "application/json")),
                 _ => throw new Exception("Указан неверный тип запроса"),
             };
-            return response.StatusCode;
+            return response;
         }
     }
 }

@@ -2,13 +2,13 @@
 Feature: GetPetByStatus
 
 @280320201827 @pos
-Scenario: Положительный тест: 3 статуса питомца
+Scenario: Positive test: all 3 correct statuses
 	* get pet by status "available"
 	* get pet by status "pending"
 	* get pet by status "sold"
 
 @280320201828 @neg
-Scenario: Негативный тест: 3 статуса питомца
+Scenario: Negative test: 3 wrong statuses
 	* get pet by status "i"
 	* get pet by status ""
 	* get pet by status "SolD"
