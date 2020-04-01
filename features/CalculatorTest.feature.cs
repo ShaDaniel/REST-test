@@ -28,7 +28,7 @@ namespace REST_test.Features
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "SpecFlowFeature1.feature"
+#line 1 "CalculatorTest.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
