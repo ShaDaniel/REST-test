@@ -37,6 +37,7 @@ namespace REST_test
                 ("get") => await client.GetAsync(url),
                 ("post") => await client.PostAsJsonAsync(url, new StringContent(json, Encoding.UTF8, "application/json")),
                 ("put") => await client.PutAsJsonAsync(url, new StringContent(json, Encoding.UTF8, "application/json")),
+                ("delete") => await client.DeleteAsync(url),
                 _ => throw new Exception("Указан неверный тип запроса"),
             };
             return response;

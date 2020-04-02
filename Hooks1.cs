@@ -11,10 +11,10 @@ namespace REST_test
     [Binding]
     public sealed class Hooks1
     {
-        [BeforeStep]
-        public void BeforeScenario()
+        [AfterScenario("gui")]
+        public void AfterScenario()
         {
-            //TODO: implement logic that has to run before executing each scenario
+            
         }
 
         [AfterStep]

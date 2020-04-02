@@ -14,7 +14,7 @@ namespace REST_test
     public class PetCreationSteps
     {
         [Given(@"create pet with name ""(.*)"" and photourls ""(.*)""")]
-        public void GivenCreatePetWithNameAndPhotourls(string name, string photourl)
+        public long GivenCreatePetWithNameAndPhotourls(string name, string photourl)
         {
             // Считаем пустые строки за NULL - отсутствие аргумента
             name = name == "" ? null : name;
@@ -38,6 +38,7 @@ namespace REST_test
             // Проверяем код ответа на запрос по получению пета
             var responseCode = requestutil.Request("get", requestutil.PetGetUri + id.ToString()).Result.StatusCode.ToString();
             Assert.AreEqual("OK", responseCode, "Новосозданное животное недоступно по ид");
+            return id;
         }
         [Given(@"send empty json body")]
         public void GivenSendEmptyJsonBody()
