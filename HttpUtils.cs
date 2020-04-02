@@ -17,6 +17,9 @@ namespace REST_test
         public string PetCreateUri { get; } = "https://petstore.swagger.io/v2/pet";
         /// <summary>  Получение животного по ID </summary>
         public string PetGetUri { get; set; } = $"https://petstore.swagger.io/v2/pet/{0}";
+        /// <summary> Создание заказа на животное </summary>
+        public string PetOrderCreateUri { get; } = "https://petstore.swagger.io/v2/store/order";
+        public string PetGetOrderUri { get; set; } = $"https://petstore.swagger.io/v2/store/order/{0}";
 
 
         /// <summary> Метод работы с веб-запросами в общем виде </summary>

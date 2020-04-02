@@ -33,8 +33,8 @@ namespace REST_test
             Assert.AreEqual(expectedCode, response.Result.StatusCode.ToString(), "Возвращен неверный код ответа");
 
             // Если успешно создано выше - проверка получения пета по id
-            var test = response.Result.Content.ReadAsStringAsync().Result;
-            var id = Convert.ToInt64(JObject.Parse(test)["id"]);
+            var message = response.Result.Content.ReadAsStringAsync().Result;
+            var id = Convert.ToInt64(JObject.Parse(message)["id"]);
             // Проверяем код ответа на запрос по получению пета
             var responseCode = requestutil.Request("get", String.Format(requestutil.PetGetUri, id)).Result.StatusCode.ToString();
             Assert.AreEqual("OK", responseCode, "Новосозданное животное недоступно по ид");
@@ -49,6 +49,5 @@ namespace REST_test
 
             Assert.AreEqual("MethodNotAllowed", responseCode.Result.ToString(), "Возвращен неверный код ответа");
         }
-
     }
 }

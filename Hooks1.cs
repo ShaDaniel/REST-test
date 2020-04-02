@@ -18,7 +18,7 @@ namespace REST_test
         }
 
         [AfterStep]
-        public void AfterScenario()
+        public void AfterStep()
         {
             var attachment = $@"{DateTime.Now}: {ScenarioContext.Current.ScenarioInfo.Title} {ScenarioContext.Current.StepContext.StepInfo.Text} {(ScenarioContext.Current.TestError != null ? "Error" : "OK")}";
             using (var connection = DBUtils.DBConnection())
