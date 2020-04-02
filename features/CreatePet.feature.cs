@@ -83,14 +83,17 @@ namespace REST_test.Features
         [NUnit.Framework.DescriptionAttribute("Positive test: create pet")]
         [NUnit.Framework.CategoryAttribute("010420202330")]
         [NUnit.Framework.CategoryAttribute("pos")]
+        [NUnit.Framework.CategoryAttribute("DShapochkin")]
         public virtual void PositiveTestCreatePet()
         {
             string[] tagsOfScenario = new string[] {
                     "010420202330",
-                    "pos"};
+                    "pos",
+                    "DShapochkin"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Positive test: create pet", null, new string[] {
                         "010420202330",
-                        "pos"});
+                        "pos",
+                        "DShapochkin"});
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -125,14 +128,17 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.DescriptionAttribute("Negative test: create pet")]
         [NUnit.Framework.CategoryAttribute("020420200018")]
         [NUnit.Framework.CategoryAttribute("neg")]
+        [NUnit.Framework.CategoryAttribute("DShapochkin")]
         public virtual void NegativeTestCreatePet()
         {
             string[] tagsOfScenario = new string[] {
                     "020420200018",
-                    "neg"};
+                    "neg",
+                    "DShapochkin"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negative test: create pet", null, new string[] {
                         "020420200018",
-                        "neg"});
+                        "neg",
+                        "DShapochkin"});
 #line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

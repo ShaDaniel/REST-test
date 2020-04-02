@@ -18,7 +18,7 @@ namespace REST_test
             List<string> legalStatuses = new List<string>() { "available", "pending", "sold" };
             var requestUtil = new GeneralHttpRequest();
 
-            var response = requestUtil.Request("get", String.Format(requestUtil.PetStatusUri, status));
+            var response = requestUtil.Request("get", requestUtil.PetGetUri + status);
             response.Wait();
             // Входит ли статус в список допустимых
             var expectedCode = legalStatuses.Contains(status) ? "OK" : "BadRequest";

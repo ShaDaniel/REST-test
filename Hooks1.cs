@@ -27,9 +27,9 @@ namespace REST_test
                 //if (System.Environment.GetEnvironmentVariable("Log") == "Yes")
                 //{
                     connection.Open();
-
-                    new MySqlCommand($"INSERT INTO logs VALUES (NOW(), '{ScenarioContext.Current.StepContext.StepInfo.Text}'," +
-                        $" '{ScenarioContext.Current.ScenarioInfo.Title}', {(ScenarioContext.Current.TestError != null ? 0 : 1)}, '{ScenarioContext.Current.TestError}')", connection).ExecuteNonQuery();
+                var sql = $@"INSERT INTO logs VALUES (NOW(), '{ScenarioContext.Current.StepContext.StepInfo.Text}',
+                            '{ScenarioContext.Current.ScenarioInfo.Title}', {(ScenarioContext.Current.TestError != null ? 0 : 1)}, '{ScenarioContext.Current.TestError}')";
+                    new MySqlCommand(sql, connection).ExecuteNonQuery();
                 //} 
                 //JENKINS
             };

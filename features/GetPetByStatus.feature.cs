@@ -83,14 +83,17 @@ namespace REST_test.Features
         [NUnit.Framework.DescriptionAttribute("Positive test: all 3 correct statuses")]
         [NUnit.Framework.CategoryAttribute("280320201827")]
         [NUnit.Framework.CategoryAttribute("pos")]
+        [NUnit.Framework.CategoryAttribute("DShapochkin")]
         public virtual void PositiveTestAll3CorrectStatuses()
         {
             string[] tagsOfScenario = new string[] {
                     "280320201827",
-                    "pos"};
+                    "pos",
+                    "DShapochkin"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Positive test: all 3 correct statuses", null, new string[] {
                         "280320201827",
-                        "pos"});
+                        "pos",
+                        "DShapochkin"});
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -128,14 +131,17 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.DescriptionAttribute("Negative test: 3 wrong statuses")]
         [NUnit.Framework.CategoryAttribute("280320201828")]
         [NUnit.Framework.CategoryAttribute("neg")]
+        [NUnit.Framework.CategoryAttribute("DShapochkin")]
         public virtual void NegativeTest3WrongStatuses()
         {
             string[] tagsOfScenario = new string[] {
                     "280320201828",
-                    "neg"};
+                    "neg",
+                    "DShapochkin"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negative test: 3 wrong statuses", null, new string[] {
                         "280320201828",
-                        "neg"});
+                        "neg",
+                        "DShapochkin"});
 #line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

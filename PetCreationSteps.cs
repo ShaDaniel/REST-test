@@ -36,7 +36,7 @@ namespace REST_test
             var message = response.Result.Content.ReadAsStringAsync().Result;
             var id = Convert.ToInt64(JObject.Parse(message)["id"]);
             // Проверяем код ответа на запрос по получению пета
-            var responseCode = requestutil.Request("get", String.Format(requestutil.PetGetUri, id)).Result.StatusCode.ToString();
+            var responseCode = requestutil.Request("get", requestutil.PetGetUri + id.ToString()).Result.StatusCode.ToString();
             Assert.AreEqual("OK", responseCode, "Новосозданное животное недоступно по ид");
         }
         [Given(@"send empty json body")]

@@ -12,14 +12,15 @@ namespace REST_test
     class GeneralHttpRequest
     {
         /// <summary> URI получения животных по статусу </summary>
-        public string PetStatusUri { get; set; } = $"https://petstore.swagger.io/v2/pet/findByStatus?status={0}";
+        public string PetStatusUri { get; set; } = $"https://petstore.swagger.io/v2/pet/findByStatus?status=";
         /// <summary> URI добавления животного </summary>
         public string PetCreateUri { get; } = "https://petstore.swagger.io/v2/pet";
         /// <summary>  Получение животного по ID </summary>
-        public string PetGetUri { get; set; } = $"https://petstore.swagger.io/v2/pet/{0}";
+        public string PetGetUri { get; set; } = $"https://petstore.swagger.io/v2/pet/";
         /// <summary> Создание заказа на животное </summary>
         public string PetOrderCreateUri { get; } = "https://petstore.swagger.io/v2/store/order";
-        public string PetGetOrderUri { get; set; } = $"https://petstore.swagger.io/v2/store/order/{0}";
+        /// <summary> Получение заказа на животное по ID заказа </summary>
+        public string PetGetOrderUri { get; set; } = $"https://petstore.swagger.io/v2/store/order/";
 
 
         /// <summary> Метод работы с веб-запросами в общем виде </summary>
@@ -35,6 +36,7 @@ namespace REST_test
             {
                 ("get") => await client.GetAsync(url),
                 ("post") => await client.PostAsJsonAsync(url, new StringContent(json, Encoding.UTF8, "application/json")),
+                ("put") => await client.PutAsJsonAsync(url, new StringContent(json, Encoding.UTF8, "application/json")),
                 _ => throw new Exception("Указан неверный тип запроса"),
             };
             return response;

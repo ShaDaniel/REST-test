@@ -21,12 +21,16 @@ namespace REST_test.Features
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("CreateOrderForPet")]
+    [NUnit.Framework.CategoryAttribute("all")]
+    [NUnit.Framework.CategoryAttribute("create_order")]
     public partial class CreateOrderForPetFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private string[] _featureTags = ((string[])(null));
+        private string[] _featureTags = new string[] {
+                "all",
+                "create_order"};
         
 #line 1 "CreateOrderPet.feature"
 #line hidden
@@ -35,7 +39,9 @@ namespace REST_test.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "CreateOrderForPet", "\t(Отказались от негативных тестов, так как все равно вернет 200)", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "CreateOrderForPet", "\t(Отказались от негативных тестов, так как все равно вернет 200)", ProgrammingLanguage.CSharp, new string[] {
+                        "all",
+                        "create_order"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -75,14 +81,20 @@ namespace REST_test.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Positive test: create an order for a pet")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.CategoryAttribute("020420200230")]
+        [NUnit.Framework.CategoryAttribute("pos")]
+        [NUnit.Framework.CategoryAttribute("DShapochkin")]
         public virtual void PositiveTestCreateAnOrderForAPet()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "020420200230",
+                    "pos",
+                    "DShapochkin"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Positive test: create an order for a pet", null, new string[] {
-                        "mytag"});
-#line 5
+                        "020420200230",
+                        "pos",
+                        "DShapochkin"});
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -102,7 +114,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 6
+#line 7
   testRunner.And("create order for a pet and check in base", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
             }

@@ -24,7 +24,7 @@ namespace REST_test
             // Проверяем, что пет был занесен в базу и мы можем его извлечь
             var message = response.Result.Content.ReadAsStringAsync().Result;
             var id = Convert.ToInt64(JObject.Parse(message)["petId"]);
-            var responseCode = requestutil.Request("get", String.Format(requestutil.PetGetOrderUri, id)).Result.StatusCode.ToString();
+            var responseCode = requestutil.Request("get", requestutil.PetGetUri + id.ToString()).Result.StatusCode.ToString();
 
             Assert.AreEqual("OK", responseCode, "Созданный заказ на животное не найден");
         }
