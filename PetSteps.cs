@@ -53,13 +53,21 @@ namespace REST_test
 
             Assert.AreEqual("OK", responseCode, "Созданный заказ на животное не найден");
         }
-        [Given(@"delete existing pet 2 times")]
+        [Given(@"delete existing pet twice")]
         public void GivenDeletePetAndCheck()
         {
             var id = GivenCreatePetWithNameAndPhotourls("test", "test");
             var requestutil = new GeneralHttpRequest();
 
+            // Удаляем созданное животное первый раз, ждем положительный результат
+            var response = requestutil.Request("delete", requestutil.PetGetUri + id.ToString());
+            response.Wait();
+            Assert.AreEqual("OK", response.Result.StatusCode.ToString(), "Удаление произошло с ошибкой");
 
+            // Удаляем то же животное второй раз, ждем ошибку
+            response = requestutil.Request("delete", requestutil.PetGetUri + id.ToString());
+            response.Wait();
+            Assert.AreEqual("NotFound", response.Result.StatusCode.ToString(), "Удаление произошло два раза");
         }
         [Given(@"get pet by status ""(.*)""")]
         public void GivenGetPetByStatus(string status)
