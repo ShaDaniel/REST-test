@@ -7,7 +7,8 @@ using TechTalk.SpecFlow;
 
 namespace REST_test
 {
-    class PetSteps
+    [Binding]
+    public class PetSteps
     {
         [Given(@"change pet info and ensure it is changed")]
         public void GivenChangePetInfoAndEnsureItSChanged()
