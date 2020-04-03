@@ -153,9 +153,10 @@ C:\Users\Kenchick\source\repos\Rest-test\bin\Debug\netcoreapp3.0\runtimes\unix\l
 C:\Users\Kenchick\source\repos\Rest-test\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 C:\Users\Kenchick\source\repos\Rest-test\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
 C:\Users\Kenchick\source\repos\Rest-test\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-C:\Users\Kenchick\source\repos\Rest-test\obj\Debug\netcoreapp3.0\REST-test.csprojAssemblyReference.cache
 C:\Users\Kenchick\source\repos\Rest-test\obj\Debug\netcoreapp3.0\REST-test.AssemblyInfoInputs.cache
 C:\Users\Kenchick\source\repos\Rest-test\obj\Debug\netcoreapp3.0\REST-test.AssemblyInfo.cs
 C:\Users\Kenchick\source\repos\Rest-test\obj\Debug\netcoreapp3.0\REST-test.csproj.CopyComplete
 C:\Users\Kenchick\source\repos\Rest-test\obj\Debug\netcoreapp3.0\REST-test.dll
 C:\Users\Kenchick\source\repos\Rest-test\obj\Debug\netcoreapp3.0\REST-test.pdb
+C:\Users\Kenchick\source\repos\Rest-test\obj\Debug\netcoreapp3.0\REST-test.csprojAssemblyReference.cache
+C:\Users\Kenchick\source\repos\Rest-test\bin\Debug\netcoreapp3.0\FluentAssertions.dll
