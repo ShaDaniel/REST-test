@@ -209,7 +209,7 @@ namespace REST_test
         {
             try
             {
-                Browser.ChromeDriver.FindElement(By.XPath("//inwefwefput[@name = 'text']"));
+                Browser.ChromeDriver.FindElement(By.XPath("//input[@name = 'text']"));
             }
             catch (NoSuchElementException)
             {
