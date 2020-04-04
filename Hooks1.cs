@@ -5,6 +5,7 @@ using System.Text;
 using TechTalk.SpecFlow;
 using MySql.Data.MySqlClient;
 using Allure.Commons;
+using OpenQA.Selenium;
 
 namespace REST_test
 {
@@ -14,7 +15,9 @@ namespace REST_test
         [AfterScenario("gui")]
         public void AfterScenario()
         {
-            
+            var shot = ((ITakesScreenshot)Browser.ChromeDriver).GetScreenshot().AsByteArray;
+            AllureLifecycle.Instance.AddAttachment("GUI error", "image/png", shot);
+            Browser.ChromeDriver.Quit();
         }
 
         [AfterStep]
@@ -23,14 +26,13 @@ namespace REST_test
             var attachment = $@"{DateTime.Now}: {ScenarioContext.Current.ScenarioInfo.Title} {ScenarioContext.Current.StepContext.StepInfo.Text} {(ScenarioContext.Current.TestError != null ? "Error" : "OK")}";
             using (var connection = DBUtils.DBConnection())
             {
-                //var exception = ScenarioContext.Current[""]
-                //if (System.Environment.GetEnvironmentVariable("Log") == "Yes")
-                //{
+                if (System.Environment.GetEnvironmentVariable("Log") == "Yes")
+                {
                     connection.Open();
                 var sql = $@"INSERT INTO logs VALUES (NOW(), '{ScenarioContext.Current.StepContext.StepInfo.Text}',
                             '{ScenarioContext.Current.ScenarioInfo.Title}', {(ScenarioContext.Current.TestError != null ? 0 : 1)}, '{ScenarioContext.Current.TestError}')";
                     new MySqlCommand(sql, connection).ExecuteNonQuery();
-                //} 
+                } 
                 //JENKINS
             };
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");

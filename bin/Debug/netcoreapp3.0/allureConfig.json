@@ -2,16 +2,36 @@
   "allure": {
     "directory": "allure-results",
     "links": [
-      "https://github.com/AutomateThePlanet/Meissa/issues/{issue}",
-      "https://github.com/AutomateThePlanet/Meissa/projects/2#card-{tms}",
-      "{link}"
+      "{link}",
+      "https://testrail.com/browse/{tms}",
+      "https://jira.com/browse/{issue}"
     ]
   },
   "specflow": {
     "stepArguments": {
       "convertToParameters": "true",
-      "paramNameRegex": "^a.*",
-      "paramValueRegex": "^v.*"
-    	}
+      "paramNameRegex": "",
+      "paramValueRegex": ""
+    },
+    "grouping": {
+      "suites": {
+        "parentSuite": "^parentSuite:?(.+)",
+        "suite": "^suite:?(.+)",
+        "subSuite": "^subSuite:?(.+)"
+      },
+      "behaviors": {
+        "epic": "^epic:?(.+)",
+        "story": "^story:(.+)"
+      }
+    },
+    "labels": {
+      "owner": "^author:?(.+)",
+      "severity": "^(normal|blocker|critical|minor|trivial)"
+    },
+    "links": {
+      "tms": "^story:(.+)",
+      "issue": "^issue:(.+)",
+      "link": "^link:(.+)",
     }
+  }
 }
