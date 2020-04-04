@@ -7,9 +7,18 @@ using NUnit.Framework;
 using TechTalk.SpecFlow;
 using FluentAssertions;
 using Newtonsoft.Json;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
 namespace REST_test
 {
+    public static class Browser
+    {
+        public static IWebDriver ChromeDriver;
+
+        public static ChromeOptions Options;
+    }
+
     [Binding]
     public class PetSteps
     {
@@ -178,5 +187,35 @@ namespace REST_test
             response.Wait();
             Assert.AreEqual(404, (int)response.Result.StatusCode, "Удаление заказа произошло 2 раза");
         }
+
+        [Given(@"open Chrome")]
+        public void GivenOpenChrome()
+        {
+            Browser.Options = new ChromeOptions();
+            Browser.Options.BinaryLocation = Environment.CurrentDirectory + @"\..\..\..\GoogleChromePortable\GoogleChromePortable.exe";
+            Browser.ChromeDriver = new ChromeDriver(Environment.CurrentDirectory + @"\..\..\..\GoogleChromePortable");
+            Browser.ChromeDriver.Manage().Window.Maximize();
+            Browser.ChromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+        }
+
+        [Given(@"go to ""(.*)""")]
+        public void GivenGoTo(string url)
+        {
+            Browser.ChromeDriver.Navigate().GoToUrl(url);
+        }
+
+        [Given(@"ensure search bar visible")]
+        public void GivenEnsureSearchBarVisible()
+        {
+            try
+            {
+                Browser.ChromeDriver.FindElement(By.XPath("//inwefwefput[@name = 'text']"));
+            }
+            catch (NoSuchElementException)
+            {
+                throw new NoSuchElementException("Строка поиска не найдена");
+            }
+        }
+
     }
 }

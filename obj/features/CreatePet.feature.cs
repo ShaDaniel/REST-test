@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace REST_test.Features
+namespace REST_test.Obj.Features
 {
     using TechTalk.SpecFlow;
     using System;

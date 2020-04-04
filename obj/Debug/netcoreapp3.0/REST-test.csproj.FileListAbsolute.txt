@@ -158,5 +158,4 @@ C:\Users\Kenchick\source\repos\Rest-test\obj\Debug\netcoreapp3.0\REST-test.Assem
 C:\Users\Kenchick\source\repos\Rest-test\obj\Debug\netcoreapp3.0\REST-test.csproj.CopyComplete
 C:\Users\Kenchick\source\repos\Rest-test\obj\Debug\netcoreapp3.0\REST-test.dll
 C:\Users\Kenchick\source\repos\Rest-test\obj\Debug\netcoreapp3.0\REST-test.pdb
-C:\Users\Kenchick\source\repos\Rest-test\obj\Debug\netcoreapp3.0\REST-test.csprojAssemblyReference.cache
 C:\Users\Kenchick\source\repos\Rest-test\bin\Debug\netcoreapp3.0\FluentAssertions.dll
