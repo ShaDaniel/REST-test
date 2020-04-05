@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace REST_test.Obj.Features
+namespace REST_test.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -20,28 +20,28 @@ namespace REST_test.Obj.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("ChangePetInfo")]
+    [NUnit.Framework.DescriptionAttribute("GetPetByStatus")]
     [NUnit.Framework.CategoryAttribute("all")]
-    [NUnit.Framework.CategoryAttribute("change_pet_info")]
-    public partial class ChangePetInfoFeature
+    [NUnit.Framework.CategoryAttribute("get_pet_by_status")]
+    public partial class GetPetByStatusFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = new string[] {
                 "all",
-                "change_pet_info"};
+                "get_pet_by_status"};
         
-#line 1 "ChangePetInfo.feature"
+#line 1 "GetPetByStatus.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "ChangePetInfo", null, ProgrammingLanguage.CSharp, new string[] {
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "GetPetByStatus", null, ProgrammingLanguage.CSharp, new string[] {
                         "all",
-                        "change_pet_info"});
+                        "get_pet_by_status"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -80,18 +80,18 @@ namespace REST_test.Obj.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Change pet info and check for updates")]
-        [NUnit.Framework.CategoryAttribute("020420200318")]
+        [NUnit.Framework.DescriptionAttribute("Positive test: all 3 correct statuses")]
+        [NUnit.Framework.CategoryAttribute("280320201827")]
         [NUnit.Framework.CategoryAttribute("pos")]
         [NUnit.Framework.CategoryAttribute("DShapochkin")]
-        public virtual void ChangePetInfoAndCheckForUpdates()
+        public virtual void PositiveTestAll3CorrectStatuses()
         {
             string[] tagsOfScenario = new string[] {
-                    "020420200318",
+                    "280320201827",
                     "pos",
                     "DShapochkin"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change pet info and check for updates", null, new string[] {
-                        "020420200318",
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Positive test: all 3 correct statuses", null, new string[] {
+                        "280320201827",
                         "pos",
                         "DShapochkin"});
 #line 5
@@ -115,7 +115,61 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 6
-  testRunner.And("change pet info and ensure it is changed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+ testRunner.And("get pet by status \"available\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
+#line 7
+ testRunner.And("get pet by status \"pending\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
+#line 8
+ testRunner.And("get pet by status \"sold\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Negative test: 3 wrong statuses")]
+        [NUnit.Framework.CategoryAttribute("280320201828")]
+        [NUnit.Framework.CategoryAttribute("neg")]
+        [NUnit.Framework.CategoryAttribute("DShapochkin")]
+        public virtual void NegativeTest3WrongStatuses()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "280320201828",
+                    "neg",
+                    "DShapochkin"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negative test: 3 wrong statuses", null, new string[] {
+                        "280320201828",
+                        "neg",
+                        "DShapochkin"});
+#line 11
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 12
+ testRunner.And("get pet by status \"i\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
+#line 13
+ testRunner.And("get pet by status \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
+#line 14
+ testRunner.And("get pet by status \"SolD\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
             }
             this.ScenarioCleanup();

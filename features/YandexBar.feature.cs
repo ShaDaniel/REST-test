@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace REST_test.Obj.Features
+namespace REST_test.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -20,28 +20,28 @@ namespace REST_test.Obj.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Pet creation")]
+    [NUnit.Framework.DescriptionAttribute("YandexSearchCheck")]
     [NUnit.Framework.CategoryAttribute("all")]
-    [NUnit.Framework.CategoryAttribute("pet_creation")]
-    public partial class PetCreationFeature
+    [NUnit.Framework.CategoryAttribute("yandex_bar")]
+    public partial class YandexSearchCheckFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = new string[] {
                 "all",
-                "pet_creation"};
+                "yandex_bar"};
         
-#line 1 "CreatePet.feature"
+#line 1 "YandexBar.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Pet creation", "Обязательные поля в модели: name, photoUrls", ProgrammingLanguage.CSharp, new string[] {
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "YandexSearchCheck", null, ProgrammingLanguage.CSharp, new string[] {
                         "all",
-                        "pet_creation"});
+                        "yandex_bar"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -80,21 +80,21 @@ namespace REST_test.Obj.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Positive test: create pet")]
-        [NUnit.Framework.CategoryAttribute("010420202330")]
-        [NUnit.Framework.CategoryAttribute("pos")]
+        [NUnit.Framework.DescriptionAttribute("Ensure that yandex search bar is availible")]
+        [NUnit.Framework.CategoryAttribute("gui")]
+        [NUnit.Framework.CategoryAttribute("040420201628")]
         [NUnit.Framework.CategoryAttribute("DShapochkin")]
-        public virtual void PositiveTestCreatePet()
+        public virtual void EnsureThatYandexSearchBarIsAvailible()
         {
             string[] tagsOfScenario = new string[] {
-                    "010420202330",
-                    "pos",
+                    "gui",
+                    "040420201628",
                     "DShapochkin"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Positive test: create pet", null, new string[] {
-                        "010420202330",
-                        "pos",
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ensure that yandex search bar is availible", null, new string[] {
+                        "gui",
+                        "040420201628",
                         "DShapochkin"});
-#line 6
+#line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -114,59 +114,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 6
+ testRunner.And("open Chrome", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
 #line 7
-  testRunner.And("create pet with name \"Cat\" and photourls \"test.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+ testRunner.And("go to \"https://ya.ru\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
 #line 8
-  testRunner.And("create pet with name \"a\" and photourls \".\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Negative test: create pet")]
-        [NUnit.Framework.CategoryAttribute("020420200018")]
-        [NUnit.Framework.CategoryAttribute("neg")]
-        [NUnit.Framework.CategoryAttribute("DShapochkin")]
-        public virtual void NegativeTestCreatePet()
-        {
-            string[] tagsOfScenario = new string[] {
-                    "020420200018",
-                    "neg",
-                    "DShapochkin"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negative test: create pet", null, new string[] {
-                        "020420200018",
-                        "neg",
-                        "DShapochkin"});
-#line 10
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 11
-  testRunner.And("create pet with name \"\" and photourls \"test.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line hidden
-#line 12
-  testRunner.And("create pet with name \"a\" and photourls \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line hidden
-#line 13
-  testRunner.And("send empty json body", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+ testRunner.And("ensure search bar visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
             }
             this.ScenarioCleanup();
