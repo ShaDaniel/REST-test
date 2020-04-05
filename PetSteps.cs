@@ -26,83 +26,111 @@ namespace REST_test
         public void GivenChangePetInfoAndEnsureItSChanged()
         {
             var requestutil = new GeneralHttpRequest();
-            var jsonClass = requestutil.JsonPetInfo;
+            var jsonClass = requestutil.JsonPetInfo; //PETINFO
             var json = JsonConvert.SerializeObject(jsonClass);
 
             var response = requestutil.Request("put", requestutil.PetCreateUri, json);
             response.Wait();
 
-            // Проверяем, что обновление произошло успешно
-            Assert.AreEqual(200, (int)response.Result.StatusCode, "Возвращен неверный код ответа");
-
-            // Проверяем в базе, что данные перезаписались
+            // Извлекаем id животного
             var responseJson = response.Result.Content.ReadAsStringAsync().Result;
             var id = Convert.ToInt64(JObject.Parse(responseJson)["id"]);
-            var message = requestutil.Request("get", requestutil.PetGetUri + id.ToString());
-            message.Wait();
-            var responseCode = message.Result.StatusCode;
 
-            // Проверяем код ответа
-            Assert.AreEqual(200, (int)responseCode, "Информация по данному животному не может быть получена");
-
-            // Проверяем, что посланное на обновление сообщение совпадает с сообщением ответа из сервиса
-            var answerJsonClass = JsonConvert.DeserializeObject<GeneralHttpRequest.PetInfo>(message.Result.Content.ReadAsStringAsync().Result);
-            answerJsonClass.Should().BeEquivalentTo(jsonClass, options => options.WithoutStrictOrdering());
-            //FLUENTASSERTIONS
+            // Заносим id пета, код ответа и json обновления инфы
+            ScenarioContext.Current["CreatedPetID"] = id;
+            ScenarioContext.Current["CodeResponse"] = (int)response.Result.StatusCode;
+            ScenarioContext.Current["UpdateMessage"] = jsonClass;
         }
-        [Given(@"create order for a pet and check in base")]
-        public long GivenCreateOrderForAPetAndCheckInBase()
+
+        [Given(@"ensure pet info was changed")]
+        public void GivenEnsurePetInfoWasChanged()
         {
             var requestutil = new GeneralHttpRequest();
-            var jsonClass = requestutil.JsonOrderPet;
+            // Проверяем в базе, что данные перезаписались
+            var message = requestutil.Request("get", requestutil.PetGetUri + ScenarioContext.Current["CreatedPetID"].ToString());
+            message.Wait();
+            var responseCode = (int)message.Result.StatusCode;
+
+            // Заносим код ответа и десериализованный message 
+            ScenarioContext.Current["CodeResponse"] = responseCode;
+            ScenarioContext.Current["UpdateMessageChecking"] = JsonConvert.DeserializeObject<GeneralHttpRequest.PetInfo>(message.Result.Content.ReadAsStringAsync().Result);
+        }
+
+        [Given(@"check if both messages match")]
+        public void GivenCheckIfBothMessagesMatch()
+        {
+            // Проверяемое и образцовое сообщение
+            var checking = ScenarioContext.Current["UpdateMessageChecking"];
+            var criterion = ScenarioContext.Current["UpdateMessage"];
+            // Проверяем, что посланное на обновление сообщение совпадает с сообщением ответа из сервиса
+            checking.Should().BeEquivalentTo(criterion, options => options.WithoutStrictOrdering());
+        }
+
+
+        [Given(@"create order for a pet and check in base")]
+        public void GivenCreateOrderForAPetAndCheckInBase()
+        {
+            var requestutil = new GeneralHttpRequest();
+            var jsonClass = requestutil.JsonOrderPet; //ORDERPET
             var json = JsonConvert.SerializeObject(jsonClass);
 
             // Отправляем запрос на создание заказа и ждем ответа
             var response = requestutil.Request("post", requestutil.PetOrderCreateUri, json);
             response.Wait();
 
-            // Проверяем, что код ответа 200
-            Assert.AreEqual(200, (int)response.Result.StatusCode, "Возвращен неверный код ответа");
-
-            // Проверяем, что пет был занесен в базу и мы можем его извлечь
             // Извлекаем Id для запроса
             var responseJson = response.Result.Content.ReadAsStringAsync().Result;
             var id = Convert.ToInt64(JObject.Parse(responseJson)["id"]);
 
-            // Непосредственно проверяем по id
-            var message = requestutil.Request("get", requestutil.PetGetUri + id.ToString());
-            var responseCode = message.Result.StatusCode;
-            
-            // Проверяем, что код ответа 200 на проверку наличия пета
-            Assert.AreEqual(200, (int)responseCode, "Созданный заказ на животное не найден");
-
-            // Проверяем, что пришли все поля как и при создании пета
-            var answerJsonClass = JsonConvert.DeserializeObject<GeneralHttpRequest.OrderPet>(message.Result.Content.ReadAsStringAsync().Result);
-            answerJsonClass.Should().BeEquivalentTo(jsonClass, options => options.WithoutStrictOrdering());
-
-            return id;
+            // Заносим id заказа, код ответа и json обновления инфы
+            ScenarioContext.Current["CreatedOrderID"] = id;
+            ScenarioContext.Current["CodeResponse"] = (int)response.Result.StatusCode;
+            ScenarioContext.Current["UpdateMessage"] = jsonClass;
         }
-        [Given(@"delete existing pet twice")]
+
+        [Given(@"ensure order creation is ok")]
+        public void GivenEnsureOrderCreationIsOk()
+        {
+            var requestutils = new GeneralHttpRequest();
+            // Проверка, что создание успешно (по запросу заказа по id)
+            var response = requestutils.Request("get", requestutils.PetGetOrderUri + ScenarioContext.Current["CreatedOrderId"].ToString());
+            response.Wait();
+            Assert.AreEqual(200, (int)response.Result.StatusCode, "Заказ на животное найден после удаления");
+            // Заносим десериализованное сообщение для дальнейшей проверки
+            ScenarioContext.Current["UpdateMessageChecking"] = JsonConvert.DeserializeObject<GeneralHttpRequest.PetInfo>(response.Result.Content.ReadAsStringAsync().Result);
+        }
+
+        [Given(@"delete pet")]
         public void GivenDeletePetAndCheck()
         {
-            var id = GivenCreatePetWithNameAndPhotourls("test", "test");
+            var id = ScenarioContext.Current["CreatedPetID"];
+            //var id = GivenCreatePetWithNameAndPhotourls("test", "test");
             var requestutil = new GeneralHttpRequest();
 
-            // Удаляем созданное животное первый раз, ждем положительный результат
+            // Удаляем созданное животное
             var response = requestutil.Request("delete", requestutil.PetGetUri + id.ToString());
             response.Wait();
-            Assert.AreEqual(200, (int)response.Result.StatusCode, "Удаление произошло с ошибкой");
 
-            // Убеждаемся, что пета больше нет в базе
-            response = requestutil.Request("get", requestutil.PetGetUri + id.ToString());
-            response.Wait();
-            Assert.AreEqual(404, (int)response.Result.StatusCode, "Удаленный питомец найден через сервис");
+            // Записываем код ответа
+            ScenarioContext.Current["CodeResponse"] = (int)response.Result.StatusCode;
+
 
             // Удаляем то же животное второй раз, ждем ошибку
             response = requestutil.Request("delete", requestutil.PetGetUri + id.ToString());
             response.Wait();
             Assert.AreEqual(404, (int)response.Result.StatusCode, "Удаление произошло два раза");
         }
+
+        [Given(@"ensure pet is gone")]
+        public void GivenEnsurePetIsGone()
+        {
+            var requestutil = new GeneralHttpRequest();
+            // Убеждаемся, что пета больше нет в базе
+            var response = requestutil.Request("get", requestutil.PetGetUri + ScenarioContext.Current["CreatedPetID"].ToString());
+            response.Wait();
+            Assert.AreEqual(404, (int)response.Result.StatusCode, "Удаленный питомец найден через сервис");
+        }
+
         [Given(@"get pet by status ""(.*)""")]
         public void GivenGetPetByStatus(string status)
         {
@@ -118,7 +146,7 @@ namespace REST_test
             Assert.AreEqual(expectedCode, (int)response.Result.StatusCode, "Возвращен неверный код ответа");
         }
         [Given(@"create pet with name ""(.*)"" and photourls ""(.*)""")]
-        public long GivenCreatePetWithNameAndPhotourls(string name, string photourl)
+        public void GivenCreatePetWithNameAndPhotourls(string name, string photourl)
         {
             // Считаем пустые строки за NULL - отсутствие аргумента
             name = name == "" ? null : name;
@@ -143,6 +171,9 @@ namespace REST_test
             var message = response.Result.Content.ReadAsStringAsync().Result;
             var id = Convert.ToInt64(JObject.Parse(message)["id"]);
 
+            // Присваиваем полученную созданную id
+            jsonClass.Id = id;
+
             // Проверяем код ответа на запрос по получению пета
             var responseGet = requestutil.Request("get", requestutil.PetGetUri + id.ToString());
             var responseGetCode = responseGet.Result.StatusCode;
@@ -152,7 +183,7 @@ namespace REST_test
             var responseGetClass = JsonConvert.DeserializeObject<GeneralHttpRequest.PetInfo>(responseGet.Result.Content.ReadAsStringAsync().Result);
             responseGetClass.Should().BeEquivalentTo(jsonClass, options => options.WithoutStrictOrdering());
 
-            return id;
+            ScenarioContext.Current["CreatedPetID"] = id;
         }
         [Given(@"send empty json body")]
         public void GivenSendEmptyJsonBody()
@@ -167,26 +198,34 @@ namespace REST_test
         [Given(@"delete pet order")]
         public void GivenDeletePetOrder()
         {
-            var id = GivenCreateOrderForAPetAndCheckInBase();
+            var id = ScenarioContext.Current["CreatedOrderID"];
             var requestutils = new GeneralHttpRequest();
 
             // Удаляем животное по id
             var response = requestutils.Request("delete", requestutils.PetGetOrderUri + id.ToString());
             response.Wait();
 
-            // Проверка, что удаление успешно (по коду)
-            Assert.AreEqual(200, (int)response.Result.StatusCode, "Удаление заказа провалилось");
+            // Заношу код ответа
+            ScenarioContext.Current["CodeResponse"] = (int)response.Result.StatusCode;
+        }
 
+        [Given(@"ensure code is (.*)")]
+        public void GivenEnsureCodeIs(int code)
+        {
+            // Проверка, что код возврата соответствует
+            Assert.AreEqual(code, (int)ScenarioContext.Current["CodeResponse"], "Код ответа не соответствует ожидаемому");
+        }
+
+        [Given(@"ensure that deletion order is ok")]
+        public void GivenEnsureThatDeletionOrderIsOk()
+        {
+            var requestutils = new GeneralHttpRequest();
             // Проверка, что удаление успешно (по запросу заказа по id)
-            response = requestutils.Request("get", requestutils.PetGetOrderUri + id.ToString());
+            var response = requestutils.Request("get", requestutils.PetGetOrderUri + ScenarioContext.Current["CreatedOrderId"].ToString());
             response.Wait();
             Assert.AreEqual(404, (int)response.Result.StatusCode, "Заказ на животное найден после удаления");
-
-            // Пытаемся удалить тот же заказ еще раз
-            response = requestutils.Request("delete", requestutils.PetGetOrderUri + id.ToString());
-            response.Wait();
-            Assert.AreEqual(404, (int)response.Result.StatusCode, "Удаление заказа произошло 2 раза");
         }
+
 
         [Given(@"open Chrome")]
         public void GivenOpenChrome()
@@ -214,6 +253,19 @@ namespace REST_test
             catch (NoSuchElementException)
             {
                 throw new NoSuchElementException("Строка поиска не найдена");
+            }
+        }
+
+        [Given(@"clear all base with pet IDs")]
+        public void GivenClearAllBaseWithPetIDs()
+        {
+            var requestutils = new GeneralHttpRequest();
+
+            // Удаляем животное по id
+            for (int i = 200; i < 10000; i++)
+            {
+                var response = requestutils.Request("delete", requestutils.PetGetOrderUri + (1845563262948988700 + i).ToString());
+                response.Wait();
             }
         }
 

@@ -84,16 +84,20 @@ namespace REST_test.Features
         [NUnit.Framework.CategoryAttribute("010420202330")]
         [NUnit.Framework.CategoryAttribute("pos")]
         [NUnit.Framework.CategoryAttribute("DShapochkin")]
-        public virtual void PositiveTestCreatePet()
+        [NUnit.Framework.TestCaseAttribute("Cat", "test.com", null)]
+        [NUnit.Framework.TestCaseAttribute("a", ".", null)]
+        public virtual void PositiveTestCreatePet(string name, string photourls, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "010420202330",
                     "pos",
                     "DShapochkin"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Positive test: create pet", null, new string[] {
-                        "010420202330",
-                        "pos",
-                        "DShapochkin"});
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Positive test: create pet", null, @__tags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -115,31 +119,32 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
-  testRunner.And("create pet with name \"Cat\" and photourls \"test.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line hidden
-#line 8
-  testRunner.And("create pet with name \"a\" and photourls \".\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+  testRunner.And(string.Format("create pet with name \"{0}\" and photourls \"{1}\"", name, photourls), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Negative test: create pet")]
+        [NUnit.Framework.DescriptionAttribute("Negative test: create pet (1)")]
         [NUnit.Framework.CategoryAttribute("020420200018")]
         [NUnit.Framework.CategoryAttribute("neg")]
         [NUnit.Framework.CategoryAttribute("DShapochkin")]
-        public virtual void NegativeTestCreatePet()
+        [NUnit.Framework.TestCaseAttribute("", "test.com", null)]
+        [NUnit.Framework.TestCaseAttribute("a", "", null)]
+        public virtual void NegativeTestCreatePet1(string name, string photourls, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "020420200018",
                     "neg",
                     "DShapochkin"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negative test: create pet", null, new string[] {
-                        "020420200018",
-                        "neg",
-                        "DShapochkin"});
-#line 10
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negative test: create pet (1)", null, @__tags);
+#line 14
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -159,13 +164,49 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 11
+#line 15
   testRunner.And("create pet with name \"\" and photourls \"test.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
-#line 12
-  testRunner.And("create pet with name \"a\" and photourls \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Negative test: create pet (2)")]
+        [NUnit.Framework.CategoryAttribute("020420200020")]
+        [NUnit.Framework.CategoryAttribute("neg")]
+        [NUnit.Framework.CategoryAttribute("DShapochkin")]
+        public virtual void NegativeTestCreatePet2()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "020420200020",
+                    "neg",
+                    "DShapochkin"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negative test: create pet (2)", null, new string[] {
+                        "020420200020",
+                        "neg",
+                        "DShapochkin"});
+#line 22
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
-#line 13
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 23
   testRunner.And("send empty json body", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
             }

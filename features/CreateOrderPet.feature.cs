@@ -117,6 +117,15 @@ this.ScenarioInitialize(scenarioInfo);
 #line 7
   testRunner.And("create order for a pet and check in base", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
+#line 8
+  testRunner.And("ensure code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
+#line 9
+  testRunner.And("ensure order creation is ok", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
+#line 10
+  testRunner.And("check if both messages match", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
             }
             this.ScenarioCleanup();
         }
