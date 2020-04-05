@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace REST_test.Obj.Features
+namespace REST_test.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -20,28 +20,28 @@ namespace REST_test.Obj.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("YandexSearchCheck")]
+    [NUnit.Framework.DescriptionAttribute("DeleteOrderPet")]
     [NUnit.Framework.CategoryAttribute("all")]
-    [NUnit.Framework.CategoryAttribute("yandex_bar")]
-    public partial class YandexSearchCheckFeature
+    [NUnit.Framework.CategoryAttribute("delete_order")]
+    public partial class DeleteOrderPetFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = new string[] {
                 "all",
-                "yandex_bar"};
+                "delete_order"};
         
-#line 1 "YandexBar.feature"
+#line 1 "DeleteOrderPet.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "YandexSearchCheck", null, ProgrammingLanguage.CSharp, new string[] {
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "DeleteOrderPet", null, ProgrammingLanguage.CSharp, new string[] {
                         "all",
-                        "yandex_bar"});
+                        "delete_order"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -80,19 +80,16 @@ namespace REST_test.Obj.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Ensure that yandex search bar is availible")]
-        [NUnit.Framework.CategoryAttribute("gui")]
-        [NUnit.Framework.CategoryAttribute("040420201628")]
+        [NUnit.Framework.DescriptionAttribute("Delete an order for a pet")]
+        [NUnit.Framework.CategoryAttribute("020420200625")]
         [NUnit.Framework.CategoryAttribute("DShapochkin")]
-        public virtual void EnsureThatYandexSearchBarIsAvailible()
+        public virtual void DeleteAnOrderForAPet()
         {
             string[] tagsOfScenario = new string[] {
-                    "gui",
-                    "040420201628",
+                    "020420200625",
                     "DShapochkin"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ensure that yandex search bar is availible", null, new string[] {
-                        "gui",
-                        "040420201628",
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete an order for a pet", null, new string[] {
+                        "020420200625",
                         "DShapochkin"});
 #line 5
 this.ScenarioInitialize(scenarioInfo);
@@ -115,13 +112,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 6
- testRunner.And("open Chrome", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line hidden
-#line 7
- testRunner.And("go to \"https://ya.ru\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line hidden
-#line 8
- testRunner.And("ensure search bar visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+ testRunner.And("delete pet order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
             }
             this.ScenarioCleanup();

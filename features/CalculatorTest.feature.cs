@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace REST_test.Obj.Features
+namespace REST_test.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -20,28 +20,29 @@ namespace REST_test.Obj.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("DeletePet")]
-    [NUnit.Framework.CategoryAttribute("all")]
-    [NUnit.Framework.CategoryAttribute("delete_pet")]
-    public partial class DeletePetFeature
+    [NUnit.Framework.DescriptionAttribute("Calculator")]
+    [NUnit.Framework.CategoryAttribute("notall")]
+    [NUnit.Framework.CategoryAttribute("calculator")]
+    public partial class CalculatorFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = new string[] {
-                "all",
-                "delete_pet"};
+                "notall",
+                "calculator"};
         
-#line 1 "DeletePet.feature"
+#line 1 "CalculatorTest.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "DeletePet", null, ProgrammingLanguage.CSharp, new string[] {
-                        "all",
-                        "delete_pet"});
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Calculator", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
+                    "f two numbers", ProgrammingLanguage.CSharp, new string[] {
+                        "notall",
+                        "calculator"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -80,18 +81,18 @@ namespace REST_test.Obj.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Delete a pet and ensure it is gone")]
-        [NUnit.Framework.CategoryAttribute("020420200515")]
+        [NUnit.Framework.DescriptionAttribute("Add two numbers")]
+        [NUnit.Framework.CategoryAttribute("test")]
         [NUnit.Framework.CategoryAttribute("DShapochkin")]
-        public virtual void DeleteAPetAndEnsureItIsGone()
+        public virtual void AddTwoNumbers()
         {
             string[] tagsOfScenario = new string[] {
-                    "020420200515",
+                    "test",
                     "DShapochkin"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete a pet and ensure it is gone", null, new string[] {
-                        "020420200515",
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", null, new string[] {
+                        "test",
                         "DShapochkin"});
-#line 5
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -111,8 +112,17 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 6
- testRunner.And("delete existing pet twice", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line 9
+ testRunner.Given("I have entered 50 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 10
+ testRunner.Given("I have also entered 70 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 11
+ testRunner.When("I press add", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 12
+ testRunner.Then("the result should be 120 on the screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

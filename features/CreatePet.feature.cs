@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace REST_test.Obj.Features
+namespace REST_test.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -20,28 +20,28 @@ namespace REST_test.Obj.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("DeleteOrderPet")]
+    [NUnit.Framework.DescriptionAttribute("Pet creation")]
     [NUnit.Framework.CategoryAttribute("all")]
-    [NUnit.Framework.CategoryAttribute("delete_order")]
-    public partial class DeleteOrderPetFeature
+    [NUnit.Framework.CategoryAttribute("pet_creation")]
+    public partial class PetCreationFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = new string[] {
                 "all",
-                "delete_order"};
+                "pet_creation"};
         
-#line 1 "DeleteOrderPet.feature"
+#line 1 "CreatePet.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "DeleteOrderPet", null, ProgrammingLanguage.CSharp, new string[] {
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Pet creation", "Обязательные поля в модели: name, photoUrls", ProgrammingLanguage.CSharp, new string[] {
                         "all",
-                        "delete_order"});
+                        "pet_creation"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -80,18 +80,21 @@ namespace REST_test.Obj.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Delete an order for a pet")]
-        [NUnit.Framework.CategoryAttribute("020420200625")]
+        [NUnit.Framework.DescriptionAttribute("Positive test: create pet")]
+        [NUnit.Framework.CategoryAttribute("010420202330")]
+        [NUnit.Framework.CategoryAttribute("pos")]
         [NUnit.Framework.CategoryAttribute("DShapochkin")]
-        public virtual void DeleteAnOrderForAPet()
+        public virtual void PositiveTestCreatePet()
         {
             string[] tagsOfScenario = new string[] {
-                    "020420200625",
+                    "010420202330",
+                    "pos",
                     "DShapochkin"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete an order for a pet", null, new string[] {
-                        "020420200625",
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Positive test: create pet", null, new string[] {
+                        "010420202330",
+                        "pos",
                         "DShapochkin"});
-#line 5
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -111,8 +114,59 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 6
- testRunner.And("delete pet order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line 7
+  testRunner.And("create pet with name \"Cat\" and photourls \"test.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
+#line 8
+  testRunner.And("create pet with name \"a\" and photourls \".\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Negative test: create pet")]
+        [NUnit.Framework.CategoryAttribute("020420200018")]
+        [NUnit.Framework.CategoryAttribute("neg")]
+        [NUnit.Framework.CategoryAttribute("DShapochkin")]
+        public virtual void NegativeTestCreatePet()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "020420200018",
+                    "neg",
+                    "DShapochkin"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negative test: create pet", null, new string[] {
+                        "020420200018",
+                        "neg",
+                        "DShapochkin"});
+#line 10
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 11
+  testRunner.And("create pet with name \"\" and photourls \"test.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
+#line 12
+  testRunner.And("create pet with name \"a\" and photourls \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
+#line 13
+  testRunner.And("send empty json body", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
             }
             this.ScenarioCleanup();
