@@ -27,7 +27,7 @@ namespace REST_test
         {
             var requestutil = new GeneralHttpRequest();
             var jsonClass = requestutil.JsonPetInfo; //PETINFO
-            jsonClass.Id = (long)ScenarioContext.Current["CreatedPetID"];
+            jsonClass.Id = (long)ScenarioContext.Current["CreatedPetId"];
             jsonClass.Name = "winnie-the-pooh";
             var json = JsonConvert.SerializeObject(jsonClass);
 
@@ -44,7 +44,7 @@ namespace REST_test
         {
             var requestutil = new GeneralHttpRequest();
             // Проверяем в базе, что данные перезаписались
-            var message = requestutil.Request("get", requestutil.PetGetUri + ScenarioContext.Current["CreatedPetID"].ToString());
+            var message = requestutil.Request("get", requestutil.PetGetUri + ScenarioContext.Current["CreatedPetId"].ToString());
             message.Wait();
             var responseCode = (int)message.Result.StatusCode;
 
@@ -80,7 +80,7 @@ namespace REST_test
             var id = Convert.ToInt64(JObject.Parse(responseJson)["id"]);
 
             // Заносим id заказа, код ответа и json обновления инфы
-            ScenarioContext.Current["CreatedOrderID"] = id;
+            ScenarioContext.Current["CreatedOrderId"] = id;
             ScenarioContext.Current["CodeResponse"] = (int)response.Result.StatusCode;
             ScenarioContext.Current["UpdateMessage"] = jsonClass;
         }
@@ -100,7 +100,7 @@ namespace REST_test
         [Given(@"delete pet")]
         public void GivenDeletePetAndCheck()
         {
-            var id = ScenarioContext.Current["CreatedPetID"];
+            var id = ScenarioContext.Current["CreatedPetId"];
             //var id = GivenCreatePetWithNameAndPhotourls("test", "test");
             var requestutil = new GeneralHttpRequest();
 
@@ -123,7 +123,7 @@ namespace REST_test
         {
             var requestutil = new GeneralHttpRequest();
             // Убеждаемся, что пета больше нет в базе
-            var response = requestutil.Request("get", requestutil.PetGetUri + ScenarioContext.Current["CreatedPetID"].ToString());
+            var response = requestutil.Request("get", requestutil.PetGetUri + ScenarioContext.Current["CreatedPetId"].ToString());
             response.Wait();
             Assert.AreEqual(404, (int)response.Result.StatusCode, "Удаленный питомец найден через сервис");
         }
@@ -180,7 +180,7 @@ namespace REST_test
             var responseGetClass = JsonConvert.DeserializeObject<GeneralHttpRequest.PetInfo>(responseGet.Result.Content.ReadAsStringAsync().Result);
             responseGetClass.Should().BeEquivalentTo(jsonClass, options => options.WithoutStrictOrdering());
 
-            ScenarioContext.Current["CreatedPetID"] = id;
+            ScenarioContext.Current["CreatedPetId"] = id;
         }
         [Given(@"send empty json body")]
         public void GivenSendEmptyJsonBody()
@@ -195,7 +195,7 @@ namespace REST_test
         [Given(@"delete pet order")]
         public void GivenDeletePetOrder()
         {
-            var id = ScenarioContext.Current["CreatedOrderID"];
+            var id = ScenarioContext.Current["CreatedOrderId"];
             var requestutils = new GeneralHttpRequest();
 
             // Удаляем животное по id
