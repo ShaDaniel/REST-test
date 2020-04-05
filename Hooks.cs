@@ -15,9 +15,12 @@ namespace REST_test
         [AfterScenario("gui")]
         public void AfterScenario()
         {
-            var shot = ((ITakesScreenshot)Browser.ChromeDriver).GetScreenshot().AsByteArray;
-            AllureLifecycle.Instance.AddAttachment("GUI error", "image/png", shot);
-            Browser.ChromeDriver.Quit();
+            if (ScenarioContext.Current.TestError != null)
+            {
+                var shot = ((ITakesScreenshot)Browser.ChromeDriver).GetScreenshot().AsByteArray;
+                AllureLifecycle.Instance.AddAttachment("GUI error", "image/png", shot);
+            }
+            Browser.ChromeDriver?.Quit();
         }
 
         [AfterStep]
