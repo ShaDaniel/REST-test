@@ -27,17 +27,14 @@ namespace REST_test
         {
             var requestutil = new GeneralHttpRequest();
             var jsonClass = requestutil.JsonPetInfo; //PETINFO
+            jsonClass.Id = (long)ScenarioContext.Current["CreatedPetID"];
+            jsonClass.Name = "winnie-the-pooh";
             var json = JsonConvert.SerializeObject(jsonClass);
 
             var response = requestutil.Request("put", requestutil.PetCreateUri, json);
             response.Wait();
 
-            // Извлекаем id животного
-            var responseJson = response.Result.Content.ReadAsStringAsync().Result;
-            var id = Convert.ToInt64(JObject.Parse(responseJson)["id"]);
-
-            // Заносим id пета, код ответа и json обновления инфы
-            ScenarioContext.Current["CreatedPetID"] = id;
+            // Заносим код ответа и json обновления инфы
             ScenarioContext.Current["CodeResponse"] = (int)response.Result.StatusCode;
             ScenarioContext.Current["UpdateMessage"] = jsonClass;
         }
@@ -95,7 +92,7 @@ namespace REST_test
             // Проверка, что создание успешно (по запросу заказа по id)
             var response = requestutils.Request("get", requestutils.PetGetOrderUri + ScenarioContext.Current["CreatedOrderId"].ToString());
             response.Wait();
-            Assert.AreEqual(200, (int)response.Result.StatusCode, "Заказ на животное найден после удаления");
+            Assert.AreEqual(200, (int)response.Result.StatusCode, "Ошибка в получении заказа на животное");
             // Заносим десериализованное сообщение для дальнейшей проверки
             ScenarioContext.Current["UpdateMessageChecking"] = JsonConvert.DeserializeObject<GeneralHttpRequest.PetInfo>(response.Result.Content.ReadAsStringAsync().Result);
         }
@@ -234,7 +231,7 @@ namespace REST_test
             Browser.Options.BinaryLocation = Environment.CurrentDirectory + @"\..\..\..\GoogleChromePortable\GoogleChromePortable.exe";
             Browser.ChromeDriver = new ChromeDriver(Environment.CurrentDirectory + @"\..\..\..\GoogleChromePortable");
             Browser.ChromeDriver.Manage().Window.Maximize();
-            Browser.ChromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+            Browser.ChromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         }
 
         [Given(@"go to ""(.*)""")]

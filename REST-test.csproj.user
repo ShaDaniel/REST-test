@@ -4,7 +4,7 @@
     <ShowAllFiles>false</ShowAllFiles>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="Hooks1.cs">
+    <Compile Update="Hooks.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

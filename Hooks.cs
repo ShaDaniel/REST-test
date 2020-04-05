@@ -10,7 +10,7 @@ using OpenQA.Selenium;
 namespace REST_test
 {
     [Binding]
-    public sealed class Hooks1
+    public sealed class Hooks
     {
         [AfterScenario("gui")]
         public void AfterScenario()
@@ -36,6 +36,7 @@ namespace REST_test
                 //JENKINS
             };
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine(attachment);
             AllureLifecycle.Instance.AddAttachment("Step Result", "text/plain", Encoding.ASCII.GetBytes(attachment));
         }
     }
