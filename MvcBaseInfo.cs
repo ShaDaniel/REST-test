@@ -9,8 +9,8 @@ namespace REST_test
 {
     public static class MvcBaseUtils
     {
-        public static string Pass = "http://0.0.0.0:777/pass/";
-        public static string PassValidate = "http://0.0.0.0:777/pass/validate/";
+        public static string Pass = "http://localhost:9999/pass/";
+        public static string PassValidate = "http://localhost:9999/pass/validate/";
         public static GeneralHttpRequest Requests = new GeneralHttpRequest();
 
         /// <summary> Метод работы с веб-запросами в общем виде </summary>
