@@ -20,28 +20,25 @@ namespace REST_test.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("DeleteOrderPet")]
-    [NUnit.Framework.CategoryAttribute("all")]
-    [NUnit.Framework.CategoryAttribute("delete_order")]
-    public partial class DeleteOrderPetFeature
+    [NUnit.Framework.DescriptionAttribute("GET pass information")]
+    [NUnit.Framework.CategoryAttribute("mvc")]
+    public partial class GETPassInformationFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = new string[] {
-                "all",
-                "delete_order"};
+                "mvc"};
         
-#line 1 "DeleteOrderPet.feature"
+#line 1 "__PassGet.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "DeleteOrderPet", null, ProgrammingLanguage.CSharp, new string[] {
-                        "all",
-                        "delete_order"});
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "GET pass information", null, ProgrammingLanguage.CSharp, new string[] {
+                        "mvc"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -80,19 +77,16 @@ namespace REST_test.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Delete an order for a pet")]
-        [NUnit.Framework.CategoryAttribute("020420200625")]
-        [NUnit.Framework.CategoryAttribute("DShapochkin")]
-        public virtual void DeleteAnOrderForAPet()
+        [NUnit.Framework.DescriptionAttribute("try to get existing pass info")]
+        [NUnit.Framework.CategoryAttribute("idGet1")]
+        public virtual void TryToGetExistingPassInfo()
         {
             string[] tagsOfScenario = new string[] {
-                    "020420200625",
-                    "DShapochkin"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete an order for a pet", null, new string[] {
-                        "020420200625",
-                        "DShapochkin"});
+                    "idGet1"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("try to get existing pass info", null, new string[] {
+                        "idGet1"});
 #line 5
-this.ScenarioInitialize(scenarioInfo);
+ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
             bool isFeatureIgnored = default(bool);
@@ -112,22 +106,52 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 6
- testRunner.And("create order for a pet and check in base", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+  testRunner.And("add pass with random person", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
 #line 7
- testRunner.And("delete pet order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+  testRunner.And("get by guid and assert return code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
-#line 8
- testRunner.And("ensure code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line hidden
-#line 9
- testRunner.And("ensure that deletion order is ok", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("try to get non-existing pass info")]
+        [NUnit.Framework.CategoryAttribute("idGet2")]
+        public virtual void TryToGetNon_ExistingPassInfo()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "idGet2"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("try to get non-existing pass info", null, new string[] {
+                        "idGet2"});
 #line 10
- testRunner.And("delete pet order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+ this.ScenarioInitialize(scenarioInfo);
 #line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
 #line 11
- testRunner.And("ensure code is 404", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+  testRunner.And("generate random guid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
+#line 12
+  testRunner.And("delete the pass by guid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
+#line 13
+  testRunner.And("get by guid and assert return code is 404", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
             }
             this.ScenarioCleanup();
