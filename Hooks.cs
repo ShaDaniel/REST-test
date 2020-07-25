@@ -42,5 +42,6 @@ namespace REST_test
             Console.WriteLine(attachment);
             AllureLifecycle.Instance.AddAttachment("Step Result", "text/plain", Encoding.ASCII.GetBytes(attachment));
         }
+
     }
 }

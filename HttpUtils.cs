@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace REST_test
 {
-    class GeneralHttpRequest
+    public class GeneralHttpRequest
     {
         /// <summary> URI получения животных по статусу </summary>
         public string PetStatusUri { get; set; } = "https://petstore.swagger.io/v2/pet/findByStatus?status=";
