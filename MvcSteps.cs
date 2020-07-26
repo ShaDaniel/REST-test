@@ -31,14 +31,17 @@ namespace REST_test
         [Given(@"get by guid and assert return code is (.*)")]
         public void GivenGetByGuidAndAssertReturnCodeIs(int expectedCode)
         {
-            MvcPass passExp = (MvcPass)ScenarioContext.Current["pass"];
             var guid = (string)ScenarioContext.Current["guid"];
 
             var response = MvcBaseUtils.Request("get", MvcBaseUtils.Pass + guid);
             Assert.AreEqual(expectedCode, (int)response.Result.StatusCode, "Только что созданный пропуск не найден");
 
             MvcPass passAct = MvcBaseUtils.Deserialize<MvcPass>(response);
-            passAct.Should().BeEquivalentTo(passExp, options => options.WithoutStrictOrdering().Excluding(o => o.Guid));
+            if (ScenarioContext.Current.ContainsKey("pass"))
+            {
+                MvcPass passExp = (MvcPass)ScenarioContext.Current["pass"];
+                passAct.Should().BeEquivalentTo(passExp, options => options.WithoutStrictOrdering().Excluding(o => o.Guid));
+            }
         }
 
         [Given(@"delete the pass by guid")]
@@ -73,12 +76,7 @@ namespace REST_test
 
             var response = MvcBaseUtils.Request("put", MvcBaseUtils.Pass, MvcPass.ToJson(newPass));
 
-            if (ScenarioContext.Current.ContainsKey("pass"))
-            {
-                var oldPass = (MvcPass)ScenarioContext.Current["pass"];
-                newPass.Should().BeEquivalentTo(oldPass, options => options.WithoutStrictOrdering().Excluding(o => o.Guid));
-            }
-
+            ScenarioContext.Current["pass"] = newPass;
             ScenarioContext.Current["lastCode"] = (int)response.Result.StatusCode;
         }
 
