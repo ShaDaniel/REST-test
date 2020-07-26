@@ -114,6 +114,9 @@ namespace REST_test.Features
 #line 8
   testRunner.And("assert code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
+#line 9
+  testRunner.And("get by guid and assert return code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
             }
             this.ScenarioCleanup();
         }
@@ -127,7 +130,7 @@ namespace REST_test.Features
                     "idPut2"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("update non-existing pass", null, new string[] {
                         "idPut2"});
-#line 11
+#line 12
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -147,16 +150,16 @@ namespace REST_test.Features
             else
             {
                 this.ScenarioStart();
-#line 12
+#line 13
   testRunner.And("generate random guid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
-#line 13
+#line 14
   testRunner.And("delete the pass by guid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
-#line 14
+#line 15
   testRunner.And("update pass with random info", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
-#line 15
+#line 16
   testRunner.And("assert code is 404", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
             }
