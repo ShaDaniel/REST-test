@@ -15,7 +15,7 @@ namespace REST_test
 
             for (int i = 0; i < len; i++)
             {
-                res += rand.Next(0, chars.Length);
+                res += chars[rand.Next(0, chars.Length)];
             }
             return (res);
         }
@@ -27,7 +27,7 @@ namespace REST_test
 
             for (int i = 0; i < 10; i++)
             {
-                res += rand.Next(0, chars.Length);
+                res += chars[rand.Next(0, chars.Length)];
             }
             res = res.Insert(4, " ");
 
