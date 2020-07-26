@@ -73,8 +73,11 @@ namespace REST_test
 
             var response = MvcBaseUtils.Request("put", MvcBaseUtils.Pass, MvcPass.ToJson(newPass));
 
-            var oldPass = (MvcPass)ScenarioContext.Current["pass"];
-            newPass.Should().BeEquivalentTo(oldPass, options => options.WithoutStrictOrdering());
+            if (ScenarioContext.Current.ContainsKey("pass"))
+            {
+                var oldPass = (MvcPass)ScenarioContext.Current["pass"];
+                newPass.Should().BeEquivalentTo(oldPass, options => options.WithoutStrictOrdering().Excluding(o => o.Guid));
+            }
 
             ScenarioContext.Current["lastCode"] = (int)response.Result.StatusCode;
         }
