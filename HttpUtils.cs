@@ -91,11 +91,12 @@ namespace REST_test
         {
             using (var client = new HttpClient())
             {
+                var x = new StringContent(json, Encoding.UTF8, "application/json");
                 var response = method switch
                 {
                     ("get") => await client.GetAsync(url),
-                    ("post") => await client.PostAsJsonAsync(url, new StringContent(json, Encoding.UTF8, "application/json")),
-                    ("put") => await client.PutAsJsonAsync(url, new StringContent(json, Encoding.UTF8, "application/json")),
+                    ("post") => await client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json")),
+                    ("put") => await client.PutAsync(url, new StringContent(json, Encoding.UTF8, "application/json")),
                     ("delete") => await client.DeleteAsync(url),
                     _ => throw new Exception("Указан неверный тип запроса"),
                 };
